@@ -40,7 +40,7 @@ document.body.style.overflow = `hidden`
    }
 
    // give filepath to image element
-   img.src = `Profile.jpeg`;
+   img.src = `portrait.JPG`;
 
    // define a function that returns a random value between 0 - max
    const rand_int = max => Math.floor (Math.random () * max)
