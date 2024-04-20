@@ -2,7 +2,7 @@ document.body.style.margin   = 0
 document.body.style.overflow = `hidden`
 
 // getting canvas element
-   const cnv = document.getElementById (`glitch_self_portrait`)
+   const cnv = document.getElementById (`glitch_portrait`)
 
    // sizing to be good size
    cnv.width = cnv.parentNode.scrollWidth
@@ -25,13 +25,12 @@ document.body.style.overflow = `hidden`
 
    // define function to execute upon loading image file
    img.onload = () => {
-
       // resizing the height of the canvas
       // to be same aspect ratio as image
-      cnv.height = cnv.width * (img.height / img.width)
+      cnv.height = cnv.width * (img.height / img.width);
 
       // drawing the image to the canvas
-      draw (img)
+      draw(img);
 
       // storing image data as string in img_data
       img_data = cnv.toDataURL ("image/jpeg")
@@ -53,7 +52,7 @@ document.body.style.overflow = `hidden`
       const chunk_size = rand_int (chunk_max / 4) * 4
 
       // random position in the data between 24 - chunk_size
-      const i = rand_int (data.length - 24 - chunk_size) + 24
+      const i = rand_int (data.length - 12 - chunk_size) + 12
 
       // grabbing all the data before the random position
       const front = data.slice (0, i)
@@ -88,14 +87,14 @@ document.body.style.overflow = `hidden`
          glitch_arr.push (i)
 
          // call itself until there are 12 glitched images
-         if (glitch_arr.length < 12) add_glitch ()
+         if (glitch_arr.length < 14) add_glitch ()
 
          // once there 12 images, start animating
          else draw_frame ()
       }
 
       // give the new image some glitchified image data
-      i.src = glitchify (img_data, 96, 6)
+      i.src = glitchify (img_data, 64, 8)
    }
 
    // instantiate variable to keep track of glitch state
@@ -114,7 +113,7 @@ document.body.style.overflow = `hidden`
       else draw (img)
 
       // probability weightings for starting and stopping the glitch
-      const prob = is_glitching ? 0.05 : 0.02
+      const prob = is_glitching ? 0.06 : 0.02
 
       // if random value is less than weighted value
       if (Math.random () < prob) {
